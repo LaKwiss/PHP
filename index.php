@@ -1,33 +1,20 @@
-<html>
+<html lang="fr">
 <head>
     <title>Exemple1</title>
-</head>
+
 <body>
 <?php
 
-$nom = "Bälli";
-$prenom = "Yann";
-$proffession = "Développeur";
+const pi = 3.14159265359;
+$rayon = 4;
+$diametre = 2*$rayon;
+$circonference = 2*$rayon * pi;
+$surface = pi * $rayon * $rayon;
 
-echo "<table border=\"2\">";
-echo "<tr>";
-echo "<td>Nom</td>";
-echo "<td>Prénom</td>";
-echo "</tr>";
-echo "<tr>";
-echo "<td>Lerdorf</td>";
-echo "<td>Rasmus</td>";
-echo "</tr>";
-echo "<tr>";
-echo "<td>Computer</td>";
-echo "<td>Jules</td>";
-echo "</tr>";
-echo "<tr>";
-echo "<td>$nom</td>";
-echo "<td>$prenom</td>";
-echo "<td>$proffession</td>";
-echo "</tr>";
-echo "</table>";
+echo "<p>\"diamètre\" = $diametre</p>";
+echo "<p>\"circonference\" = $circonference</p>";
+echo "<p>\"surface\" = $surface</p>";
+
 ?>
 </body>
 </html>
