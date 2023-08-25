@@ -1,31 +1,43 @@
-<html lang="fr">
+<!doctype html>
+<html lang="en">
 <head>
-    <title>Exemple1</title>
-
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Index.php</title>
+</head>
 <body>
-<?php
-$tab = array("nom" => "Lerdorf", "prenom" => "Rasmus", "adresse" => "Chemin des appaches 7", "npa" => "2610", "ville" => "St-Imier", "email" => "rasmus.lerdorf@php.net" );
-echo "<table>";
-echo "<tr>";
-echo "<th>";
-echo "Clef";
-echo "</th>";
-echo "<th>";
-echo "Valeur";
-echo "</th>";
-echo "</tr>";
+<form action="result.php" method="get">
 
-foreach ($tab AS $key => $value){
-    echo "<tr>";
-    echo "<td>";
-    echo $key;
-    echo "</td>";
-    echo "<td>";
-    echo $value;
-    echo "</td>";
-    echo "</tr>";
-}
-echo "</table>"
-?>
+    <input type="text" name="username">
+    <br>
+    <br>
+    <input type="email" name="email">
+    <br>
+    <br>
+    <select name="note">
+        <option>Insuffisant (1)</option>
+        <option>Suffisant (2)</option>
+        <option>Bien (3)</option>
+        <option>Très bien (4)</option>
+    </select>
+    <br>
+    <br>
+
+    <textarea name="message"></textarea>
+    <br>
+    <br>
+    <input type="radio" name="genre" value="homme">Homme
+    <input type="radio" name="genre" value="femme">Femme
+    <br>
+    <br>
+    <input type="checkbox" name="newsletter" checked>
+    <br>
+    <br>
+    <input type="submit" value="envoyer">
+
+
+</form>
 </body>
 </html>
