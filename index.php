@@ -8,34 +8,23 @@
     <title>Index.php</title>
 </head>
 <body>
-<form action="result.php" method="get">
+<form action="result.php" method="post">
 
-    <input type="text" name="username">
-    <br>
-    <br>
-    <input type="email" name="email">
-    <br>
-    <br>
-    <select name="note">
-        <option>Insuffisant (1)</option>
-        <option>Suffisant (2)</option>
-        <option>Bien (3)</option>
-        <option>Très bien (4)</option>
+    <select name="formation">
+        <option>ICT</option>
+        <option>Automaticien</option>
+        <option>OIC</option>
+        <option>Electronic</option>
     </select>
     <br>
+    <input type="radio" name="annee" value="homme">1ère année
+    <input type="radio" name="annee" value="femme">2ème année
+    <input type="radio" name="annee" value="homme">3ème année
+    <input type="radio" name="annee" value="femme">4ème année
     <br>
-
-    <textarea name="message"></textarea>
+    <input type="checkbox" name="matu"> Matu
     <br>
-    <br>
-    <input type="radio" name="genre" value="homme">Homme
-    <input type="radio" name="genre" value="femme">Femme
-    <br>
-    <br>
-    <input type="checkbox" name="newsletter" checked>
-    <br>
-    <br>
-    <input type="submit" value="envoyer">
+    <input type="submit" name="send_name" value="envoyer">
 
 
 </form>
