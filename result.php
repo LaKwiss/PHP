@@ -15,21 +15,7 @@
 <pre>
 <?php
 
-echo "<table>";
-foreach ($_POST AS $key => $value){
-echo "<tr>";
-echo "<td>";
-echo "$key";
-echo "</td>";
-echo "<td>";
-echo "$value";
-echo "</td>";
-echo "</tr>";
-}
-echo "</table>";
-
-echo "<br>";
-print_r($_POST)
+print_r($_GET)
 
 ?>
 </pre>

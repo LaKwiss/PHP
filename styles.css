@@ -1,0 +1,21 @@
+h1{
+    font-family: sans-serif;
+}
+
+td{
+    padding-left: 50px;
+    width: 350px;
+
+}
+
+tr{
+    height: 18px;
+}
+
+p{
+    font-family: sans-serif;
+}
+
+#mo{
+    text-align: center;
+}
