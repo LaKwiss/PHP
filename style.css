@@ -1,11 +1,85 @@
-td{
-    font-family: sans-serif;
+th{
+    font-family: Arial;
 }
 
 table{
-    border: 1px solid black;
+    font-family: Inter;
+    width: 440px;
+}
+
+#a{
+    width: 330px;
 }
 
 td{
-    border: 1px solid black;
+    font-family: Arial;
+}
+
+#c{
+    width: 230px;
+}
+
+#t{
+    width: 340px;
+}
+
+h1{
+    font-family: Arial;
+}
+
+.multicolor-rotate {
+    animation: multicolorRotation 2s linear infinite, changeColor 5s linear infinite;
+    display: inline-block;
+}
+
+@keyframes multicolorRotation {
+    0% {
+        transform: rotate(0deg);
+    }
+    360% {
+        transform: rotate(360deg);
+    }
+    0% {
+        transform: rotate(360deg);
+    }
+    360% {
+        transform: rotate(0deg);
+    }
+}
+
+@keyframes changeColor {
+    0% {
+        color: red;
+        text-align: right;
+        font-family: Algerian;
+        font-size: 10px;
+    }
+    25% {
+        color: blue;
+        text-align: center;
+        font-family: Arial;
+        font-size: 90px;
+    }
+    50% {
+        color: green;
+        text-align: left;
+        font-family: Algerian
+        font-size: 10px;
+    }
+    75% {
+        color: #ffff00;
+        text-align: center;
+        font-family: Arial;
+        font-size: 90px;
+    }
+    100% {
+        color: red;
+        font-family: Algerian;
+        font-size: 30px;
+    }
+}
+
+.no{
+    animation: multicolorRotation 1s linear infinite, changeColor 5s linear infinite;
+    display: inline-block;
 }

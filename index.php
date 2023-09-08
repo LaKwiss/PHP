@@ -1,129 +1,95 @@
-<!doctype html>
-<html lang="en">
+<html>
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport"
-          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <link rel="stylesheet" href="styles.css">
-    <title>Index.php</title>
+    <title>ICT JB v2</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
+
 <?php
+include("notes.inc.php");
 
-$Ntheorie = array(  'ICH 117 - Informatique d\'une petite entreprise' => 5.5,
-                    'ICH 319 - Programmation' => 5
-);
 
-$Ncie = array(      'ICT 216 - IOT' => 5.5,
-                    'ICT 187 - NTFS'=> 5.5
 
-);
+echo "<table border='3' id='b'>";
+foreach ($tab_notes AS $nomDomaine => $domaine){
 
-$Mtheorie = 0;
-$Mcie = 0;
+    $nbNote = 0;
+    $sommeNote = 0;
 
-foreach ($Ntheorie AS $item){
-    $Mtheorie += $item;
-}
+    echo "<tr><th colspan='4' class='title'>". $domaine['desc']."</th>"."</tr>";
 
-foreach ($Ncie AS $item){
-    $Mcie += $item;
-}
 
-$NtheorieLength =  count($Ntheorie);
-$NcieLength = count($Ncie);
+    foreach($domaine['modules'] AS $key => $modules){
+        echo "<tr>";
+        echo "<td>". $key."</td>" ;
+        echo "<td>" .$modules['desc']."</td>";
+        echo "<td>" .$modules['date']."</td>";
+        if($modules['note'] >= 4.5){
+            echo "<td class='suf'>".$modules['note']."</td>";
+        }elseif ($modules['note'] < 4){
+            echo "<td class='insuf'>".$modules['note']."</td>";
+        }else {
+            echo "<td class='mid'>".$modules['note']."</td>";
+        }
 
-$Mtheorie = $Mtheorie / $NtheorieLength;
-$Mcie = $Mcie / $NcieLength;
+        $nbNote++;
+        $sommeNote += $modules['note'];
 
-echo "<h1>Cours Interentreprises</h1>";
+        echo "</tr>";
 
-echo "<table>";
-foreach ($Ntheorie AS $key => $value){
+    }
+    $moyenne = $sommeNote / $nbNote;
     echo "<tr>";
-    echo "<td>";
-    echo $key;
-    echo "</td>";
-    echo "<td>";
-    echo $value;
-    echo "</td>";
-    echo "</tr>";
-}
-echo "</table>";
+    echo "<td colspan='3'>Moyenne</td>";
+    echo "<td>".$moyenne."</td>";
 
-echo "<h1>Cours Interentreprises</h1>";
-
-echo "<table>";
-foreach ($Ncie AS $key => $value){
-    echo "<tr>";
-    echo "<td>";
-    echo $key;
-    echo "</td>";
-    echo "<td>";
-    echo $value;
-    echo "</td>";
+    $tab_notes[$nomDomaine]['moyenne'] = $moyenne;
     echo "</tr>";
+
 }
 echo "</table>";
 
-$MComp = (($Mtheorie * 4) + ($Mcie))/5;
-$Mtpi = 5;
+echo "<table border='2' id='a'>";
 
-echo "<h1>Compétences en informatique</h1>";
-
-echo "<table>";
+foreach($tab_notes AS $domaine){
     echo "<tr>";
-    echo "<td>";
-    echo "<div>Modules de compétences informatiques</div>";
-    echo "</td>";
-    echo "<td>";
-    echo $Mtheorie;
-    echo "</td>";
-    echo "</tr>";
-    echo "<tr>";
-    echo "<td>";
-    echo "<div>Cours interentreprises</div><br>";
-    echo "</td>";
-    echo "<td>";
-    echo $Mcie;
-    echo "</td>";
-    echo "</tr>";
-    echo "<tr>";
-    echo "<td>";
-    echo "<div>Moyenne</div>";
-    echo "</td>";
-    echo "<td>";
-    echo "<div id='mo'>$MComp</div>";
-    echo "</td>";
-    echo "</tr>";
-echo "</table>";
+    echo "<td>" .$domaine['desc']."</td>";
+    echo "<td>" .$domaine['ponderation']."%"."</td>";
 
-echo "<h1>TPI</h1>";
+    echo "<td class='suf'>".$domaine['moyenne']."</td>";
+    echo "</tr>";
 
-echo "<table>";
+}
+
+$mf = 0;
+$pond = 0;
+foreach ($tab_notes AS $domaine){
+
+    $mf += (($domaine['moyenne'] * $domaine['ponderation']));
+    $pond += $domaine['ponderation'];
+}
+
+$final = $mf / $pond;
+$tab_notes['moyenne_finale'] = $final;
+
+
+echo "<table id='t' border='2'>";
 echo "<tr>";
-echo "<td>";
-echo "<div>Moyenne</div>";
-echo "</td>";
-echo "<td>";
-echo "<div id='mo'>$Mtpi</div>";
-echo "</td>";
+echo "<td id='c'>Moyenne Générale</td>";
+
+
+echo "<td id='d'>".round($final)."</td>";
 echo "</tr>";
 echo "</table>";
+if ($final > 4){
+    echo"<h1 class='multicolor-rotate' >CFC REUSSI</h1>";
+}
+else{
+    echo"<h1 class='no'>CFC PAS REUSSI, A L'ANNEE PROCHAINE</h1>";
+}
 
-echo "<h1>Note globale</h1>";
-$a =($Mtpi + $MComp)/2;
-echo "<table>";
-echo "<tr>";
-echo "<td>";
-echo "<div>Moyenne</div>";
-echo "</td>";
-echo "<td>";
-echo "<div id='mo'>$a</div>";
-echo "</td>";
-echo "</tr>";
-echo "</table>";
+
+
 ?>
 </body>
 </html>
